@@ -23,11 +23,15 @@
     .tagline { margin-top:10px; font-family:'Cinzel',serif; letter-spacing:2px; color:#f5deb3; opacity:.8; }
     @keyframes glow { from{text-shadow:0 0 5px #cfa33c;} to{text-shadow:0 0 20px #cfa33c;} }
 
-    /* Gallery Classic */
-    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:20px; }
-    .card { background: rgba(255,255,255,0.05); border-radius:15px; overflow:hidden; transition:.4s; border:1px solid rgba(255,255,255,0.1); }
-    .card:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(255,165,0,.5); }
-    .card img, .card video, .card iframe { width:100%; display:block; border-radius:10px; }
+    <section class="gallery">
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_202571701223008.mp4" type="video/mp4"></video></div>
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_20257171753049.mp4" type="video/mp4"></video></div>
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_20257171783639.mp4" type="video/mp4"></video></div>
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_2025712923254.mp4" type="video/mp4"></video></div>
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_20257129230922.mp4" type="video/mp4"></video></div>
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_20260107204049.mp4" type="video/mp4"></video></div>
+  <div class="card"><video controls muted playsinline><source src="ogfile/lv_0_20260120225630.mp4" type="video/mp4"></video></div>
+</section>
 
     /* Reviews Classic */
     .reviews { text-align:center; background: rgba(0,0,0,0.25); padding: 30px 20px; margin: 30px 15px; border-radius: 15px; font-family: 'Cinzel', serif; color: #f5deb3; }
