@@ -24,10 +24,46 @@
     @keyframes glow { from{text-shadow:0 0 5px #cfa33c;} to{text-shadow:0 0 20px #cfa33c;} }
 
     /* Gallery Classic */
-    .gallery { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:15px; padding:20px; }
-    .card { background: rgba(255,255,255,0.05); border-radius:15px; overflow:hidden; transition:.4s; border:1px solid rgba(255,255,255,0.1); }
-    .card:hover { transform:scale(1.05); box-shadow:0 0 20px rgba(255,165,0,.5); }
-    .card img, .card video, .card iframe { width:100%; display:block; border-radius:10px; }
+    .premium-gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:18px;
+      padding:25px;
+    }
+
+    .video-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:18px;
+      border:1px solid rgba(255,215,0,.3);
+      background:#000;
+      box-shadow:0 0 25px rgba(255,215,0,.15);
+      transition:.5s;
+    }
+
+    .video-card:hover{
+      transform:scale(1.06);
+      box-shadow:0 0 35px rgba(255,215,0,.6);
+    }
+
+    .video-card video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(.9);
+      transition:.4s;
+    }
+
+    .video-card:hover video{
+      filter:brightness(1.15);
+    }
+
+    /* Mobile Friendly */
+    @media(max-width:600px){
+      .premium-gallery{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
 
     /* Reviews Classic */
     .reviews { text-align:center; background: rgba(0,0,0,0.25); padding: 30px 20px; margin: 30px 15px; border-radius: 15px; font-family: 'Cinzel', serif; color: #f5deb3; }
@@ -64,104 +100,54 @@
 
   <!-- Gallery with 7 Videos -->
   <section class="gallery premium-gallery">
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_202571701223008.mp4" type="video/mp4">
-    </video>
-  </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_202571701223008.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_20257171753049.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_20257171783639.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_2025712923254.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_20257129230922.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_20260107204049.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="video-card">
+      <video muted playsinline loop>
+        <source src="./ogfile/lv_0_20260120225630.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
 
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_20257171753049.mp4" type="video/mp4">
-    </video>
-  </div>
+  <!-- JS for Hover Play -->
+  <script>
+    document.querySelectorAll(".video-card video").forEach(v => {
+      v.addEventListener("mouseenter", ()=> {
+        v.muted = true;
+        v.play().catch(err => console.log("Autoplay blocked:", err));
+      });
+      v.addEventListener("mouseleave", ()=> v.pause());
+    });
+  </script>
 
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_20257171783639.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_2025712923254.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_20257129230922.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_20260107204049.mp4" type="video/mp4">
-    </video>
-  </div>
-
-  <div class="video-card">
-    <video muted loop playsinline>
-      <source src="ogfile/lv_0_20260120225630.mp4" type="video/mp4">
-    </video>
-  </div>
-</section>
-
-<style>
-.premium-gallery{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-  padding:25px;
-}
-
-.video-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:18px;
-  border:1px solid rgba(255,215,0,.3);
-  background:#000;
-  box-shadow:0 0 25px rgba(255,215,0,.15);
-  transition:.5s;
-}
-
-.video-card:hover{
-  transform:scale(1.06);
-  box-shadow:0 0 35px rgba(255,215,0,.6);
-}
-
-.video-card video{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  filter:brightness(.9);
-  transition:.4s;
-}
-
-.video-card:hover video{
-  filter:brightness(1.15);
-}
-
-/* Auto play on hover */
-.video-card:hover video{
-  autoplay:true;
-}
-
-/* Mobile Friendly */
-@media(max-width:600px){
-  .premium-gallery{
-    grid-template-columns:repeat(2,1fr);
-  }
-}
-</style>
-
-<script>
-document.querySelectorAll(".video-card video").forEach(v=>{
-  v.addEventListener("mouseenter",()=>v.play());
-  v.addEventListener("mouseleave",()=>v.pause());
-});
-</script>
-                                                          
   <!-- Reviews -->
   <section class="reviews">
     <h2>Client Reviews</h2>
