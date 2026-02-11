@@ -12,7 +12,6 @@
       background-color: #000;
       color: #FFD700;
     }
-
     a { text-decoration: none; transition: 0.3s; }
     a:hover { opacity: 0.8; }
 
@@ -234,17 +233,17 @@
 
 <section id="booking">
   <h2>Book Your Edit</h2>
-  <form>
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="text" name="whatsapp" placeholder="WhatsApp Number" required>
-    <input type="text" name="instagram" placeholder="Instagram Handle" required>
-    <select name="service" required>
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="text" id="whatsapp" placeholder="WhatsApp Number" required>
+    <input type="text" id="instagram" placeholder="Instagram Handle" required>
+    <select id="service" required>
       <option value="">Select Service</option>
-      <option value="premium">Premium Editing</option>
-      <option value="classic">Classic Editing</option>
+      <option value="Premium Editing">Premium Editing</option>
+      <option value="Classic Editing">Classic Editing</option>
     </select>
-    <input type="date" name="date" required>
-    <input type="time" name="time" required>
+    <input type="date" id="date" required>
+    <input type="time" id="time" required>
     <button type="submit">Confirm Booking</button>
   </form>
 </section>
@@ -258,6 +257,24 @@
 <footer>
   &copy; 2026 OGAASHU | All Rights Reserved
 </footer>
+
+<script>
+  const form = document.getElementById('bookingForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const whatsapp = document.getElementById('whatsapp').value;
+    const instagram = document.getElementById('instagram').value;
+    const service = document.getElementById('service').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+
+    const yourNumber = "919574814403"; // tumhara WhatsApp number
+    const message = `Hi OGAASHU, I want to book an edit.%0AName: ${name}%0AWhatsApp: ${whatsapp}%0AInstagram: ${instagram}%0AService: ${service}%0ADate: ${date}%0ATime: ${time}`;
+    const whatsappLink = `https://wa.me/${yourNumber}?text=${message}`;
+    window.open(whatsappLink, '_blank');
+  });
+</script>
 
 </body>
 </html>
